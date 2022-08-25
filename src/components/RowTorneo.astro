@@ -22,7 +22,7 @@ let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
       {torneo.prize}€
     </div>
 
-    <div class="name font-bold text-center lg:text-left lg:w-9/12">
+    <div class="name font-bold text-center lg:text-left lg:w-8/12">
       <a
         href={"/torneo/" + torneo.id}
         class="text-2xl lg:text-lg flex flex-col lg:flex-row items-center"
@@ -40,7 +40,7 @@ let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
     </div>
 
     <div
-      class="flex flex-col gap-2 text-sm text-center lg:text-right w-100 lg:w-1/12"
+      class="flex flex-col gap-2 text-sm text-center lg:text-right w-100 lg:w-2/12"
     >
       <strong>{datestring}</strong>
       <strong class="text-xl">{hour}</strong>
