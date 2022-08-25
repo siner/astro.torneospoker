@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const id = Astro.params.id;
+import { getTorneo, getAllTorneos } from "../../lib/api";
+let torneo = await getTorneo(id);
+
+export async function getStaticPaths() {
+  let torneos = await getAllTorneos();
+  return torneos.map((tor) => {
+    return {
+      params: { id: tor.id.toString() },
+    };
+  });
+}
+---
+
+<Layout title={torneo.name}>
+  <div class="flex flex-col p-10">
+    <div class="mb-5 text-4xl font-bold">{torneo.name}</div>
+    <div>{torneo.date} - {torneo.hour}</div>
+    <div class="text-base text-grey-darker">
+      <p>Precio: {torneo.prize}€</p>
+      <p>
+        Casino: <a href={"/casino/" + torneo.casinos.id}
+          >{torneo.casinos.name}
+        </a>
+      </p>
+    </div>
+  </div>
+</Layout>

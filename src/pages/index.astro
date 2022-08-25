@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Torneo from "../components/Torneo.astro";
+import { getProximosTorneos } from "../lib/api";
+
+let torneos = await getProximosTorneos();
+---
+
+<Layout title="Torneos Poker">
+  <main class="container mx-auto">
+    <h1>Torneos Poker</h1>
+
+    <div>
+      {torneos.map((torneo) => <Torneo torneo={torneo} />)}
+    </div>
+  </main>
+</Layout>
