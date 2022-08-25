@@ -66,6 +66,24 @@ export async function getProximosTorneos() {
   return torneos;
 }
 
+export async function getProximosTorneosId() {
+  let { data: torneos } = await supabase
+    .from("torneos")
+    .select("*")
+    .gte("date", getTodayText());
+  return torneos;
+}
+
+export async function getProximosTorneosPaginated(from, to) {
+  let { data: torneos } = await supabase
+    .from("torneos")
+    .select("*,casinos(*)")
+    .gte("date", getTodayText())
+    .order("date")
+    .range(from, to);
+  return torneos;
+}
+
 export async function getCashgamesCasino(id) {
   let { data: cashgames } = await supabase
     .from("cashgames")

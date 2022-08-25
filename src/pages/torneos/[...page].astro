@@ -1,0 +1,81 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import RowTorneo from "../../components/RowTorneo.astro";
+import LinkButton from "../../components/LinkButton.astro";
+
+import {
+  getProximosTorneosPaginated,
+  getProximosTorneosId,
+} from "../../lib/api";
+import { getPagination } from "../../lib/utils";
+
+let alltorneos = await getProximosTorneosId();
+let sizetorneos = alltorneos.length;
+let maxpages = Math.ceil(sizetorneos / 5);
+let maxpagesnumber = maxpages - 1;
+let page = Astro.params.page;
+page = page == null ? 0 : page;
+page = eval(page.toString());
+
+const { from, to } = getPagination(page, 5);
+let torneos = await getProximosTorneosPaginated(from, to);
+
+let prev = page > 0 ? page - 1 : null;
+let next = page < maxpagesnumber ? page + 1 : null;
+
+prev = prev == 0 ? "" : prev;
+---
+
+<Layout
+  title="Torneos Poker"
+  description="Información actualizada sobre torneos de Poker en España"
+>
+  <main class="mx-10">
+    <h2 class="text-2xl font-bold py-4">
+      Próximos Torneos ({page + 1} / {maxpages})
+    </h2>
+    <div class="space-y-0.5">
+      {torneos.map((torneo) => <RowTorneo torneo={torneo} casino="true" />)}
+    </div>
+    <div class="mt-4 space-x-2 flex">
+      {
+        prev != null ? (
+          <LinkButton href={"/torneos/" + prev}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+          </LinkButton>
+        ) : null
+      }
+      {
+        next ? (
+          <LinkButton href={"/torneos/" + next}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </LinkButton>
+        ) : null
+      }
+    </div>
+  </main>
+</Layout>

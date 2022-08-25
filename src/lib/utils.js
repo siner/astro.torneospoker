@@ -10,3 +10,10 @@ export function formatDate(date) {
     newdate.getHours() + ":" + String(newdate.getMinutes()).padStart(2, 0);
   return { datestring, hour };
 }
+
+export function getPagination(page, size) {
+  const limit = size ? +size : 5;
+  const from = page ? page * limit : 0;
+  const to = page ? from + size - 1 : size - 1;
+  return { from, to };
+}
