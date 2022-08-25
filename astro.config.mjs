@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import cloudflare from "@astrojs/cloudflare";
+import vercel from "@astrojs/vercel/serverless";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
@@ -7,5 +7,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: "server",
-  adapter: cloudflare({ mode: "directory" }),
+  adapter: vercel(),
 });
