@@ -25,7 +25,7 @@ let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
     <div class="name font-bold text-center lg:text-left lg:w-9/12">
       <a
         href={"/torneo/" + torneo.id}
-        class="text-2xl lg:text-lg flex items-center"
+        class="text-2xl lg:text-lg flex flex-col lg:flex-row items-center"
         >{torneo.name}{
           torneo.image && (
             <img
