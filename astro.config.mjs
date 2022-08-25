@@ -7,5 +7,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: "server",
-  adapter: cloudflare(),
+  adapter: cloudflare({ mode: "directory" }),
 });
