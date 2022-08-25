@@ -5,7 +5,10 @@ import { getTorneo } from "../../lib/api";
 let torneo = await getTorneo(id);
 ---
 
-<Layout title={torneo.name}>
+<Layout
+  title={torneo.name}
+  description={"Torneo de Poker " + torneo.name + " en " + torneo.casinos.name}
+>
   <div class="flex flex-col p-10">
     <div class="mb-5 text-4xl font-bold">{torneo.name}</div>
     <div>{torneo.date} - {torneo.hour}</div>
