@@ -1,39 +1,62 @@
 ---
 const { torneo, casino } = Astro.props;
-let bg = torneo.casinos.color;
-let date = new Date(torneo.date).toLocaleDateString("es-ES");
+import { formatDate } from "../lib/utils.js";
+const backgroundColor = torneo.casinos.color;
+let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
 ---
 
-<div
-  class="flex flex-col gap-4 lg:flex-row justify-between text-white bg-slate-500 p-5 items-center"
-  style={{ backgroundColor: bg }}
->
-  {
-    casino && (
-      <div class="block lg:hidden text-xs w-100">
-        <a href={"/casino/" + torneo.casinos.id}>{torneo.casinos.name}</a>
-      </div>
-    )
-  }
-  <div class="flex lg:flex-col gap-2 text-xs w-100 lg:w-1/12">
-    <strong>{date}</strong>
-    <strong>{torneo.hour}</strong>
-  </div>
-  {
-    casino && (
-      <div class="hidden lg:block casino text-lg lg:text-xs w-100 lg:w-1/12">
-        <a href={"/casino/" + torneo.casinos.id}>{torneo.casinos.name}</a>
-      </div>
-    )
-  }
-  <div class="name w-100 font-bold text-center lg:text-left lg:w-8/12">
-    <a href={"/torneo/" + torneo.id} class="text-2xl lg:text-lg"
-      >{torneo.name}
-    </a>
-  </div>
+<div class="rowtorneo flex text-white bg-stone-500 hover:bg-stone-700">
   <div
-    class="prize font-bold text-3xl lg:text-xl w-100 lg:w-2/12 text-center lg:text-right"
+    class="w-full flex flex-col gap-4 lg:flex-row justify-between p-5 py-2 items-center"
   >
-    {torneo.prize}€
+    {
+      casino && (
+        <div class="casino text-lg lg:text-xs w-100 lg:w-1/12 ml-2">
+          <a href={"/casino/" + torneo.casinos.id}>{torneo.casinos.name}</a>
+        </div>
+      )
+    }
+    <div
+      class="prize font-bold text-3xl lg:text-xl w-100 lg:w-1/12 text-center lg:text-right"
+    >
+      {torneo.prize}€
+    </div>
+
+    <div class="name font-bold text-center lg:text-left lg:w-9/12">
+      <a
+        href={"/torneo/" + torneo.id}
+        class="text-2xl lg:text-lg flex items-center"
+        >{torneo.name}{
+          torneo.image && (
+            <img
+              width="100"
+              class="ml-4"
+              src={torneo.image}
+              alt={"Icono " + torneo.name}
+            />
+          )
+        }
+      </a>
+    </div>
+
+    <div
+      class="flex flex-col gap-2 text-sm text-center lg:text-right w-100 lg:w-1/12"
+    >
+      <strong>{datestring}</strong>
+      <strong class="text-xl">{hour}</strong>
+    </div>
   </div>
 </div>
+
+<style define:vars={{ backgroundColor }}>
+  .rowtorneo {
+    position: relative;
+  }
+  .rowtorneo::before {
+    position: absolute;
+    content: " ";
+    width: 10px;
+    height: 100%;
+    background-color: var(--backgroundColor);
+  }
+</style>

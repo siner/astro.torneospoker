@@ -1,24 +1,39 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import CardCasino from "../../components/CardCasino.astro";
 const id = Astro.params.id;
 import { getTorneo } from "../../lib/api";
+import { formatDate } from "../../lib/utils.js";
 let torneo = await getTorneo(id);
+
+let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
 ---
 
 <Layout
   title={torneo.name}
   description={"Torneo de Poker " + torneo.name + " en " + torneo.casinos.name}
 >
-  <div class="flex flex-col p-10">
-    <div class="mb-5 text-4xl font-bold">{torneo.name}</div>
-    <div>{torneo.date} - {torneo.hour}</div>
-    <div class="text-base text-grey-darker">
-      <p>Precio: {torneo.prize}€</p>
-      <p>
-        Casino: <a href={"/casino/" + torneo.casinos.id}
-          >{torneo.casinos.name}
-        </a>
-      </p>
+  <div class="lg:flex gap-4 mx-10 mt-10">
+    <div class="lg:w-8/12">
+      <div class="mb-5 text-4xl font-bold flex items-center">
+        {torneo.name}{
+          torneo.image && (
+            <img
+              width="100"
+              class="ml-4"
+              src={torneo.image}
+              alt={"Icono " + torneo.name}
+            />
+          )
+        }
+      </div>
+      <div>{datestring} - {hour}</div>
+      <div class="text-base text-grey-darker">
+        <p>Precio: {torneo.prize}€</p>
+      </div>
+    </div>
+    <div class="lg:w-4/12">
+      <CardCasino casino={torneo.casinos} />
     </div>
   </div>
 </Layout>

@@ -14,7 +14,7 @@ let casinos = await getAllCasinos();
 >
   <main class="mx-10">
     <h2 class="text-2xl font-bold py-4">Próximos Torneos</h2>
-    <div>
+    <div class="space-y-0.5">
       {torneos.map((torneo) => <RowTorneo torneo={torneo} casino="true" />)}
     </div>
 
