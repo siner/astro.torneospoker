@@ -65,3 +65,11 @@ export async function getProximosTorneos() {
     .order("date");
   return torneos;
 }
+
+export async function getCashgamesCasino(id) {
+  let { data: cashgames } = await supabase
+    .from("cashgames")
+    .select("*")
+    .eq("casino_id", id);
+  return cashgames;
+}
