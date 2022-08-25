@@ -1,17 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 const id = Astro.params.id;
-import { getTorneo, getAllTorneos } from "../../lib/api";
+import { getTorneo } from "../../lib/api";
 let torneo = await getTorneo(id);
-
-export async function getStaticPaths() {
-  let torneos = await getAllTorneos();
-  return torneos.map((tor) => {
-    return {
-      params: { id: tor.id.toString() },
-    };
-  });
-}
 ---
 
 <Layout title={torneo.name}>

@@ -21,7 +21,7 @@ export async function getAllTorneos() {
 export async function getCasino(id) {
   let { data: casino } = await supabase
     .from("casinos")
-    .select("name,address")
+    .select("name,address,logo,color")
     .eq("id", id)
     .limit(1)
     .single();
@@ -31,7 +31,7 @@ export async function getCasino(id) {
 export async function getTorneo(id) {
   let { data: torneo } = await supabase
     .from("torneos")
-    .select("name,date,hour,prize,casinos(id,name)")
+    .select("id,name,date,hour,prize,casinos(id,name,logo,color)")
     .eq("id", id)
     .limit(1)
     .single();
@@ -50,7 +50,7 @@ export async function getTorneosCasino(id) {
 export async function getProximosTorneosCasino(id) {
   let { data: torneos } = await supabase
     .from("torneos")
-    .select("*")
+    .select("id,name,date,hour,prize,casinos(id,name,logo,color)")
     .eq("casino_id", id)
     .gte("date", getTodayText())
     .order("date");
@@ -60,7 +60,7 @@ export async function getProximosTorneosCasino(id) {
 export async function getProximosTorneos() {
   let { data: torneos } = await supabase
     .from("torneos")
-    .select("*")
+    .select("id,name,date,hour,prize,casinos(id,name,logo,color)")
     .gte("date", getTodayText())
     .order("date");
   return torneos;

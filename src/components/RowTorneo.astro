@@ -1,0 +1,33 @@
+---
+const { torneo, casino } = Astro.props;
+let bg = torneo.casinos.color;
+---
+
+<div
+  class="w-100 flex justify-between text-white bg-slate-500 p-5 items-center"
+  style={{ backgroundColor: bg }}
+>
+  <div class="flex gap-10 items-center">
+    <div class="flex flex-col text-xs w-20">
+      <div>
+        <strong>{new Date(torneo.date).toLocaleDateString("es-ES")}</strong>
+      </div>
+      <div>
+        <strong>{torneo.hour}</strong>
+      </div>
+    </div>
+    {
+      casino && (
+        <div class="casino text-xs w-32">
+          <a href={"/casino/" + torneo.casinos.id}>{torneo.casinos.name}</a>
+        </div>
+      )
+    }
+    <div class="name">
+      <a href={"/torneo/" + torneo.id} class="text-lg">{torneo.name}</a>
+    </div>
+  </div>
+  <div class="prize font-bold text-xl">
+    {torneo.prize}€
+  </div>
+</div>

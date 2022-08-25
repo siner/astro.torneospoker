@@ -1,17 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Torneo from "../components/Torneo.astro";
-import { getProximosTorneos } from "../lib/api";
+import RowTorneo from "../components/RowTorneo.astro";
+import CardCasino from "../components/CardCasino.astro";
+import { getProximosTorneos, getAllCasinos } from "../lib/api";
 
 let torneos = await getProximosTorneos();
+let casinos = await getAllCasinos();
 ---
 
 <Layout title="Torneos Poker">
   <main class="container mx-auto">
-    <h1>Torneos Poker</h1>
-
+    <h2 class="text-2xl font-bold py-4">Próximos Torneos</h2>
     <div>
-      {torneos.map((torneo) => <Torneo torneo={torneo} />)}
+      {torneos.map((torneo) => <RowTorneo torneo={torneo} casino="true" />)}
+    </div>
+
+    <h2 class="text-2xl font-bold py-4">Casinos</h2>
+    <div class="grid grid-cols-3 gap-4">
+      {casinos.map((casino) => <CardCasino casino={casino} />)}
     </div>
   </main>
 </Layout>
