@@ -53,7 +53,7 @@ export async function getProximosTorneosCasino(id) {
     .select("*")
     .eq("casino_id", id)
     .gte("date", getTodayText())
-    .order("date", { ascending: false });
+    .order("date");
   return torneos;
 }
 
@@ -62,6 +62,6 @@ export async function getProximosTorneos() {
     .from("torneos")
     .select("*")
     .gte("date", getTodayText())
-    .order("date", { ascending: false });
+    .order("date");
   return torneos;
 }
