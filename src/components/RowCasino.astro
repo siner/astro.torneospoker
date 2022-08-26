@@ -1,0 +1,27 @@
+---
+const { casino } = Astro.props;
+const backgroundColor = casino.color;
+---
+
+<div class="rowcasino flex text-white bg-stone-500 hover:bg-stone-700">
+  <div
+    class="w-full flex flex-col gap-4 lg:flex-row justify-between p-5 py-2 items-center"
+  >
+    <div class="font-bold text-3xl lg:text-xl w-100 text-center lg:text-right">
+      {casino.name}
+    </div>
+  </div>
+</div>
+
+<style define:vars={{ backgroundColor }}>
+  .rowcasino {
+    position: relative;
+  }
+  .rowcasino::before {
+    position: absolute;
+    content: " ";
+    width: 10px;
+    height: 100%;
+    background-color: var(--backgroundColor);
+  }
+</style>

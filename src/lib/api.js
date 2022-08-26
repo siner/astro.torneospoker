@@ -99,6 +99,22 @@ export async function getPreferencias(user_id) {
     .eq("user_id", user_id)
     .limit(1)
     .single();
+
+  if (!preferencias) {
+    let { data: newpreferencias } = await supabase
+      .from("preferences")
+      .insert({ user_id: user_id, casinos: [] });
+    return newpreferencias;
+  }
+
+  return preferencias;
+}
+
+export async function updateMyCasinos(user_id, mycasinos) {
+  let { data: preferencias, error } = await supabase
+    .from("preferences")
+    .update({ casinos: mycasinos })
+    .eq("user_id", user_id);
   return preferencias;
 }
 
