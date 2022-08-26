@@ -5,10 +5,12 @@ const { isLoggedIn } = Astro.props;
 <div class="text-lg pt-5">
   {
     isLoggedIn ? (
-      <div>
-        You are logged in 😎🎉!
+      <div class="flex gap-2">
+        <a href="/preferencias" class="underline">
+          Mis Preferencias
+        </a>
         <a href="/logout" class="underline">
-          Log out
+          Salir
         </a>
       </div>
     ) : (

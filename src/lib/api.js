@@ -91,3 +91,21 @@ export async function getCashgamesCasino(id) {
     .eq("casino_id", id);
   return cashgames;
 }
+
+export async function getPreferencias(user_id) {
+  let { data: preferencias } = await supabase
+    .from("preferences")
+    .select("casinos")
+    .eq("user_id", user_id)
+    .limit(1)
+    .single();
+  return preferencias;
+}
+
+export async function getPreferedCasinos(pref_casinos) {
+  let { data: casinos } = await supabase
+    .from("casinos")
+    .select("*")
+    .in("id", pref_casinos);
+  return casinos;
+}

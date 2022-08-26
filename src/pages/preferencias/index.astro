@@ -1,0 +1,23 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CardCasino from "../../components/CardCasino.astro";
+
+import { getUser } from "../../lib/auth";
+const user = await getUser(Astro.request);
+if (!user) {
+  return Astro.redirect("/login");
+}
+
+import { getPreferencias, getPreferedCasinos } from "../../lib/api";
+let preferencias = await getPreferencias(user.id);
+let casinos = await getPreferedCasinos(preferencias.casinos);
+---
+
+<Layout title="Admin" description="Admin">
+  <main class="mx-10">
+    <h2 class="text-2xl font-bold py-4">Mis Casinos Preferidos</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      {casinos.map((casino) => <CardCasino casino={casino} />)}
+    </div>
+  </main>
+</Layout>
