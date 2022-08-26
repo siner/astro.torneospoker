@@ -3,6 +3,12 @@ const req = Astro.request;
 import Layout from "../layouts/Layout.astro";
 ---
 
+<Layout title="Entrando">
+  <main class="mx-10">
+    <h2 class="text-2xl font-bold py-4">Entrando...</h2>
+  </main>
+</Layout>
+
 <script is:inline>
   async function parseMagicLink(req) {
     const vals = window.location.hash
