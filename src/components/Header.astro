@@ -1,3 +1,11 @@
+---
+import LoginStatus from "./auth/LoginStatus.astro";
+import { getUser } from "../lib/auth";
+const user = await getUser(Astro.request);
+
+const isLoggedIn = !(user == null);
+---
+
 <header class="bg-slate-800 shadow-lg">
   <nav class="mx-10 flex items-center justify-between flex-wrap p-6 text-white">
     <a href="/" class="flex items-center flex-no-shrink text-white mr-6">
@@ -23,5 +31,6 @@
         >Torneos Poker España</span
       >
     </a>
+    <LoginStatus isLoggedIn={isLoggedIn} />
   </nav>
 </header>

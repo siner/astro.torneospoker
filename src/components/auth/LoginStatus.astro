@@ -1,0 +1,22 @@
+---
+const { isLoggedIn } = Astro.props;
+---
+
+<div class="text-lg pt-5">
+  {
+    isLoggedIn ? (
+      <div>
+        You are logged in 😎🎉!
+        <a href="/logout" class="underline">
+          Log out
+        </a>
+      </div>
+    ) : (
+      <div>
+        <a href="/login" class="underline">
+          Entrar
+        </a>
+      </div>
+    )
+  }
+</div>
