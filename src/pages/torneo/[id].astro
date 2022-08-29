@@ -1,9 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import CardCasino from "../../components/CardCasino.astro";
+import CardCasino from "../../components/casino/CardCasino";
 const id = Astro.params.id;
 import { getTorneo } from "../../lib/api";
-import { formatDate } from "../../lib/utils.js";
+import { formatDate } from "../../lib/utils";
 let torneo = await getTorneo(id);
 
 let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);

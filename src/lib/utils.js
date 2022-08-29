@@ -3,6 +3,10 @@ const options = {
   day: "numeric",
 };
 
+export function localeDateString(date) {
+  return date.toLocaleDateString("es-ES", options);
+}
+
 export function formatDate(date) {
   let newdate = new Date(date);
   let datestring = newdate.toLocaleDateString("es-ES", options);

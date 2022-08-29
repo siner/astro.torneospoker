@@ -1,0 +1,10 @@
+.rowcasino,
+.rowtournament {
+  position: relative;
+}
+.colorstick {
+  position: absolute;
+  content: " ";
+  width: 10px;
+  height: 100%;
+}

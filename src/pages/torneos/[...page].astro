@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import RowTorneo from "../../components/RowTorneo.astro";
-import LinkButton from "../../components/LinkButton.astro";
+import RowTournament from "../../components/tournament/RowTournament";
+import LinkButton from "../../components/elements/LinkButton";
 
 import {
   getProximosTorneosPaginated,
@@ -35,7 +35,7 @@ prev = prev == 0 ? "" : prev;
       Próximos Torneos ({page + 1} / {maxpages})
     </h2>
     <div class="space-y-0.5">
-      {torneos.map((torneo) => <RowTorneo torneo={torneo} casino="true" />)}
+      {torneos.map((torneo) => <RowTournament torneo={torneo} casino="true" />)}
     </div>
     <div class="mt-4 space-x-2 flex">
       {

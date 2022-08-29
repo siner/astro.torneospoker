@@ -1,8 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import CardCasino from "../../components/CardCasino.astro";
-import RowTorneo from "../../components/RowTorneo.astro";
-import RowCashgame from "../../components/RowCashgame.astro";
+import CardCasino from "../../components/casino/CardCasino";
+import RowTournament from "../../components/tournament/RowTournament";
+import RowCashgame from "../../components/cashgame/RowCashgame";
 
 const id = Astro.params.id;
 import {
@@ -24,7 +24,11 @@ let cashgames = await getCashgamesCasino(id);
       <div class="lg:w-2/3">
         <h2 class="text-4xl font-bold py-4">Próximos Torneos</h2>
         <div>
-          {torneos.map((torneo) => <RowTorneo torneo={torneo} />)}
+          {
+            torneos.map((torneo) => (
+              <RowTournament torneo={torneo} casino="false" />
+            ))
+          }
         </div>
 
         <h2 class="text-4xl font-bold py-4">Cash</h2>
