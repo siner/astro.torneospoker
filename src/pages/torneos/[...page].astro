@@ -13,15 +13,19 @@ let alltorneos = await getProximosTorneosId();
 let sizetorneos = alltorneos.length;
 let maxpages = Math.ceil(sizetorneos / 5);
 let maxpagesnumber = maxpages - 1;
-let page = Astro.params.page;
-page = page == null ? 0 : page;
-page = eval(page.toString());
+let p = Astro.params.page;
+p = p == null ? 0 : p;
+let page: number = eval(p.toString());
+
+console.log(page);
 
 const { from, to } = getPagination(page, 5);
+console.log(from);
+console.log(to);
 let torneos = await getProximosTorneosPaginated(from, to);
 
-let prev = page > 0 ? page - 1 : null;
-let next = page < maxpagesnumber ? page + 1 : null;
+let prev: number | string = page > 0 ? page - 1 : null;
+let next: number = page < maxpagesnumber ? page + 1 : null;
 
 prev = prev == 0 ? "" : prev;
 ---
