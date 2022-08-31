@@ -21,11 +21,11 @@ if (!user || !is_admin || !casino) {
   title={"Editar " + casino.name}
   description={"Editar casino " + casino.name}
 >
-  <div class="lg:flex gap-4 space-y-4 lg:space-y-0 mx-10 mt-10">
-    <div class="lg:w-8/12">
+  <div class="md:flex gap-4 space-y-4 lg:space-y-0 mx-10 mt-10">
+    <div class="md:w-8/12">
       <EditCasino currentcasino={casino} client:load />
     </div>
-    <div class="lg:w-4/12">
+    <div class="md:w-4/12">
       <CardCasino casino={casino} />
     </div>
   </div>

@@ -9,35 +9,35 @@ export default function RowTournament({ torneo, casino }) {
       <div
         className="colorstick"
         style={{ backgroundColor: backgroundColor }}></div>
-      <div className="w-full flex flex-col gap-4 lg:flex-row justify-between p-5 py-2 items-center">
+      <div className="w-full flex flex-col gap-4 md:flex-row justify-between p-5 py-2 items-center">
         {casino && (
-          <div className="casino text-lg lg:text-xs w-100 lg:w-1/12 ml-2">
+          <div className="casino text-lg md:text-xs w-100 md:w-1/12 ml-2">
             <a href={"/casino/" + torneo.casinos.id}>{torneo.casinos.name}</a>
           </div>
         )}
-        <div className="price font-bold text-2xl lg:text-xl w-100 lg:w-1/12 text-center lg:text-right">
+        <div className="price font-bold text-2xl md:text-xl w-100 md:w-1/12 text-center md:text-right">
           {torneo.price && <span>{torneo.price}€</span>}
         </div>
 
-        <div className="name font-bold text-center lg:text-left lg:w-8/12">
+        <div className="name text-center md:text-left md:w-8/12">
           <a
             href={"/torneo/" + torneo.id}
-            className="text-xl lg:text-lg flex flex-col lg:flex-row items-center">
-            {torneo.name}
+            className="text-xl md:text-lg flex flex-col md:flex-row items-center">
             {torneo.image && (
               <img
                 width="100"
-                className="ml-4 hidden lg:inline"
+                className="mr-4 hidden md:inline"
                 src={torneo.image}
                 alt={"Icono " + torneo.name}
               />
             )}
+            {torneo.name}
           </a>
         </div>
 
-        <div className="flex lg:flex-col space-x-2 gap-2 text-sm items-center text-center lg:text-right w-100 lg:w-2/12">
-          <strong>{datestring}</strong>
-          <strong className="text-xl">{hour}</strong>
+        <div className="flex md:flex-col space-x-2 gap-2 text-sm items-center md:items-end text-center md:text-right w-100 md:w-2/12">
+          <p>{datestring}</p>
+          <p className="text-xl">{hour}</p>
         </div>
       </div>
     </div>

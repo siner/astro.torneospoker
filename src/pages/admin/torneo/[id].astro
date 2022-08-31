@@ -21,7 +21,7 @@ if (!user || !is_admin || !torneo) {
   title={"Editar " + torneo.name}
   description={"Editar torneo " + torneo.name}
 >
-  <div class="lg:flex gap-4 space-y-4 lg:space-y-0 mx-10 mt-10">
+  <div class="md:flex gap-4 space-y-4 lg:space-y-0 mx-10 mt-10">
     <div class="w-full">
       <InfoTournament torneo={torneo} />
       <EditTorneo currenttorneo={torneo} casinos={casinos} client:load />
