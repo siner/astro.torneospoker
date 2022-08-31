@@ -15,8 +15,8 @@ export default function RowTournament({ torneo, casino }) {
             <a href={"/casino/" + torneo.casinos.id}>{torneo.casinos.name}</a>
           </div>
         )}
-        <div className="prize font-bold text-3xl lg:text-xl w-100 lg:w-1/12 text-center lg:text-right">
-          {torneo.prize}€
+        <div className="price font-bold text-3xl lg:text-xl w-100 lg:w-1/12 text-center lg:text-right">
+          {torneo.price && <span>{torneo.price}€</span>}
         </div>
 
         <div className="name font-bold text-center lg:text-left lg:w-8/12">

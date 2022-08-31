@@ -11,17 +11,13 @@ import { getPagination } from "../../lib/utils";
 
 let alltorneos = await getProximosTorneosId();
 let sizetorneos = alltorneos.length;
-let maxpages = Math.ceil(sizetorneos / 5);
+let maxpages = Math.ceil(sizetorneos / 20);
 let maxpagesnumber = maxpages - 1;
 let p = Astro.params.page;
 p = p == null ? 0 : p;
 let page: number = eval(p.toString());
 
-console.log(page);
-
-const { from, to } = getPagination(page, 5);
-console.log(from);
-console.log(to);
+const { from, to } = getPagination(page, 20);
 let torneos = await getProximosTorneosPaginated(from, to);
 
 let prev: number | string = page > 0 ? page - 1 : null;

@@ -1,0 +1,23 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import CreateTorneo from "../../../components/admin/CreateTorneo.jsx";
+import { getAllCasinos } from "../../../lib/api";
+let casinos = await getAllCasinos();
+import { getUser, isAdmin } from "../../../lib/auth";
+const user = await getUser(Astro.request);
+let is_admin;
+if (user) {
+  is_admin = await isAdmin(user.id);
+}
+if (!user || !is_admin) {
+  return Astro.redirect("/login");
+}
+---
+
+<Layout title="Nuevo torneo" description="Nuevo torneo">
+  <div class="lg:flex gap-4 space-y-4 lg:space-y-0 mx-10 mt-10">
+    <div class="w-full">
+      <CreateTorneo casinos={casinos} client:load />
+    </div>
+  </div>
+</Layout>

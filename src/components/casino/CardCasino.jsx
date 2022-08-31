@@ -4,7 +4,12 @@ export default function CardCasino({ casino }) {
   return (
     <div className="rounded overflow-hidden shadow-lg">
       <div className="text-center p-10" style={{ backgroundColor: bg }}>
-        <img className="mx-auto" src={casino.logo} alt={casino.name} />
+        <img
+          className="mx-auto"
+          src={casino.logo}
+          alt={casino.name}
+          width="150"
+        />
       </div>
       <div className="px-6 py-4">
         <a href={"/casino/" + casino.id} className="font-bold text-xl mb-2">

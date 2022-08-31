@@ -1,4 +1,4 @@
-import { localeDateString } from "../lib/utils";
+import { localeDateString } from "../../lib/utils";
 
 export default function InfoTournament({ torneo }) {
   let bg = torneo.casinos.color;
@@ -33,7 +33,7 @@ export default function InfoTournament({ torneo }) {
           </a>
         </div>
       </div>
-      <div className="prize font-bold">{torneo.prize}€</div>
+      {torneo.price && <div className="price font-bold">{torneo.price}€</div>}
     </div>
   );
 }

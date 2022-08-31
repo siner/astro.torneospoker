@@ -5,7 +5,7 @@ import LinkButton from "../components/elements/LinkButton";
 import CardCasino from "../components/casino/CardCasino";
 import { getProximosTorneosPaginated, getAllCasinos } from "../lib/api";
 
-let torneos = await getProximosTorneosPaginated(0, 4);
+let torneos = await getProximosTorneosPaginated(0, 7);
 let casinos = await getAllCasinos();
 ---
 
@@ -23,7 +23,7 @@ let casinos = await getAllCasinos();
     </div>
 
     <h2 class="text-2xl font-bold py-4">Casinos</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
       {casinos.map((casino) => <CardCasino casino={casino} />)}
     </div>
   </main>

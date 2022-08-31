@@ -28,6 +28,39 @@ export async function getCasino(id) {
   return casino;
 }
 
+export async function newCasino(newcasino) {
+  let { data: casino } = await supabase.from("casinos").insert(newcasino);
+  return casino;
+}
+
+export async function updateCasino(id, newcasino) {
+  let { data: casino } = await supabase
+    .from("casinos")
+    .update(newcasino)
+    .eq("id", id);
+  return casino;
+}
+
+export async function newTorneo(newtorneo) {
+  let { data: torneo } = await supabase.from("torneos").insert(newtorneo);
+  return torneo;
+}
+export async function deleteTorneo(torneo_id) {
+  let { data: torneo } = await supabase
+    .from("torneos")
+    .delete()
+    .match({ id: torneo_id });
+  return torneo;
+}
+
+export async function updateTorneo(id, newtorneo) {
+  let { data: torneo } = await supabase
+    .from("torneos")
+    .update(newtorneo)
+    .eq("id", id);
+  return torneo;
+}
+
 export async function getTorneo(id) {
   let { data: torneo } = await supabase
     .from("torneos")

@@ -1,4 +1,5 @@
-export default function LoginStatus({ isLoggedIn }) {
+export default function LoginStatus(props) {
+  const { isLoggedIn } = props;
   return (
     <div className="text-lg pt-5">
       {isLoggedIn ? (

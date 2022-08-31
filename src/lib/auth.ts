@@ -14,6 +14,21 @@ export async function getUser(req: Request) {
   return resp.user;
 }
 
+export async function getUserlevel(user_id) {
+  let { data: userlevel } = await supabase
+    .from("userlevel")
+    .select("level")
+    .eq("user_id", user_id)
+    .limit(1)
+    .single();
+  return userlevel;
+}
+
 export async function isLoggedIn(req: Request) {
   return (await getUser(req)) != null;
+}
+
+export async function isAdmin(user_id) {
+  let level = await getUserlevel(user_id);
+  return level.level == 1;
 }

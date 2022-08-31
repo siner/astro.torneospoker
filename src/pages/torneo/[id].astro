@@ -6,6 +6,13 @@ import { getTorneo } from "../../lib/api";
 import { formatDate } from "../../lib/utils";
 let torneo = await getTorneo(id);
 
+import { getUser, isAdmin } from "../../lib/auth";
+const user = await getUser(Astro.request);
+let is_admin;
+if (user) {
+  is_admin = await isAdmin(user.id);
+}
+
 let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
 ---
 
@@ -31,14 +38,32 @@ let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
               )
             }
           </div>
-          <div class="text-4xl font-bold">
-            {torneo.prize}€
-          </div>
+          {
+            torneo.price && (
+              <div class="text-4xl font-bold">{torneo.price}€</div>
+            )
+          }
         </div>
         <div class="p-5">
           <div class="font-bold">{datestring} - {hour}</div>
           <div class="mt-6">{torneo.description}</div>
         </div>
+        {
+          is_admin && (
+            <div class="p-5 text-right space-x-2">
+              <a
+                class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                href={"/admin/torneo/" + torneo.id}>
+                Editar
+              </a>
+              <a
+                class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                href={"/admin/torneo/duplicate-" + torneo.id}>
+                Duplicar
+              </a>
+            </div>
+          )
+        }
       </div>
     </div>
     <div class="lg:w-4/12">
