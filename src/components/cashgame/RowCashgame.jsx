@@ -1,16 +1,12 @@
 export default function RowTournament({ cashgame }) {
   return (
     <div className="rowcashgame flex text-white bg-stone-500">
-      <div className="w-full flex flex-col gap-4 md:flex-row justify-between p-5 py-2 items-center">
-        <div className="name text-2xl md:text-lg font-bold text-center md:text-left md:w-6/12">
-          {cashgame.name}
-        </div>
-        <div className="flex flex-col gap-2 text-sm text-center md:text-right w-100 md:w-3/12">
+      <div className="w-full flex gap-4 justify-between p-5 py-2 items-center text-sm">
+        <div className="text-left w-6/12">{cashgame.name}</div>
+        <div className="text-right w-2/12">
           <strong>{cashgame.blinds}</strong>
         </div>
-        <div className="prize font-bold text-md w-100 md:w-3/12 text-center md:text-right">
-          {cashgame.buyins}
-        </div>
+        <div className="w-4/12 text-right">{cashgame.buyins}</div>
       </div>
     </div>
   );
