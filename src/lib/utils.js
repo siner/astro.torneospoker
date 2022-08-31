@@ -15,6 +15,13 @@ export function formatDate(date) {
   return { datestring, hour };
 }
 
+export function getMobileDate(date) {
+  let newdate = new Date(date);
+  let datestring =
+    newdate.getDay() + "/" + newdate.getMonth() + "/" + newdate.getFullYear();
+  return datestring;
+}
+
 export function getPagination(page, size) {
   const limit = size ? +size : 5;
   const from = page ? page * limit : 0;

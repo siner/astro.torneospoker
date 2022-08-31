@@ -1,32 +1,37 @@
-import { formatDate } from "../../lib/utils";
+import { formatDate, getMobileDate } from "../../lib/utils";
 
 export default function RowTournament({ torneo, casino }) {
   const backgroundColor = torneo.casinos.color;
   let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
+  let mobiledate = getMobileDate(torneo.date);
 
   return (
-    <div className="rowtournament relative flex text-white bg-stone-500 hover:bg-stone-700">
+    <div className="rowtournament relative text-white bg-stone-500 hover:bg-stone-700">
       <div
         className="colorstick"
         style={{ backgroundColor: backgroundColor }}></div>
-      <div className="w-full flex flex-col gap-4 md:flex-row justify-between p-5 py-2 items-center">
+      {casino && (
+        <div className="casino md:hidden text-xs w-full ml-4 pt-1 text-gray-300">
+          {torneo.casinos.name}
+        </div>
+      )}
+      <div className="w-full flex gap-4 justify-between p-2 pt-0 md:pt-2 items-center space-x-1">
         {casino && (
-          <div className="casino text-lg md:text-xs w-100 md:w-1/12 ml-2">
+          <div className="casino hidden md:block text-xs w-1/12 ml-2">
             <a href={"/casino/" + torneo.casinos.id}>{torneo.casinos.name}</a>
           </div>
         )}
-        <div className="price font-bold text-2xl md:text-xl w-100 md:w-1/12 text-center md:text-right">
+        <div className="price font-bold text-xs md:text-lg w-1/12 text-right">
           {torneo.price && <span>{torneo.price}€</span>}
         </div>
 
-        <div className="name text-center md:text-left md:w-8/12">
+        <div className="name text-left w-7/12">
           <a
             href={"/torneo/" + torneo.id}
-            className="text-xl md:text-lg flex flex-col md:flex-row items-center">
+            className="text-sm md:text-lg flex flex-col md:flex-row md:items-center">
             {torneo.image && (
               <img
-                width="100"
-                className="mr-4 hidden md:inline"
+                className="mr-4 hidden md:inline w-20 max-h-10"
                 src={torneo.image}
                 alt={"Icono " + torneo.name}
               />
@@ -35,9 +40,10 @@ export default function RowTournament({ torneo, casino }) {
           </a>
         </div>
 
-        <div className="flex md:flex-col space-x-2 gap-2 text-sm items-center md:items-end text-center md:text-right w-100 md:w-2/12">
-          <p>{datestring}</p>
-          <p className="text-xl">{hour}</p>
+        <div className="md:space-x-2 md:gap-2 text-xs items-end text-right w-3/12">
+          <p className="hidden sm:block">{datestring}</p>
+          <p className="sm:hidden">{mobiledate}</p>
+          <p>{hour}</p>
         </div>
       </div>
     </div>
