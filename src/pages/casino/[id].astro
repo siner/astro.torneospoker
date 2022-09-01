@@ -42,16 +42,16 @@ if (user) {
       <div class="md:w-2/3">
         <h2 class="text-4xl font-bold py-4">Próximos Torneos</h2>
         <div class="space-y-0.5">
-          {
-            torneos.map((torneo) => (
-              <RowTournament torneo={torneo} casino="false" />
-            ))
-          }
+          {torneos.map((torneo) => <RowTournament torneo={torneo} />)}
         </div>
 
         <h2 class="text-4xl font-bold py-4">Cash</h2>
         <div class="space-y-0.5">
-          {cashgames.map((cashgame) => <RowCashgame cashgame={cashgame} />)}
+          {
+            cashgames.map((cashgame) => (
+              <RowCashgame cashgame={cashgame} casino={casino} />
+            ))
+          }
         </div>
       </div>
     </div>
