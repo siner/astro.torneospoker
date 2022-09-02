@@ -7,6 +7,10 @@ export function localeDateString(date) {
   return date.toLocaleDateString("es-ES", options);
 }
 
+function padTo2Digits(num) {
+  return num.toString().padStart(2, "0");
+}
+
 export function formatDate(date) {
   let newdate = new Date(date);
   let datestring = newdate.toLocaleDateString("es-ES", options);
@@ -17,9 +21,11 @@ export function formatDate(date) {
 
 export function getMobileDate(date) {
   let newdate = new Date(date);
-  let datestring =
-    newdate.getDay() + "/" + newdate.getMonth() + "/" + newdate.getFullYear();
-  return datestring;
+  return [
+    padTo2Digits(newdate.getDate()),
+    padTo2Digits(newdate.getMonth() + 1),
+    newdate.getFullYear(),
+  ].join("/");
 }
 
 export function getPagination(page, size) {
