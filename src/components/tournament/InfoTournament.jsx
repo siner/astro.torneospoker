@@ -1,13 +1,17 @@
-import { localeDateString } from "../../lib/utils";
+import { localeDateString, getTextColor } from "../../lib/utils";
 
-export default function InfoTournament({ torneo }) {
-  let bg = torneo.casinos.color;
+export default function InfoTournament(props) {
+  const { torneo } = props;
+
+  const backgroundColor = torneo.casinos.color;
+  const textColor = getTextColor(backgroundColor);
+
   const date = new Date(torneo.date);
 
   return (
     <div
-      className="w-100 flex justify-between text-white bg-slate-500 p-5 items-center"
-      style={{ backgroundColor: bg }}>
+      className="w-100 flex justify-between p-5 items-center"
+      style={{ backgroundColor: backgroundColor, color: textColor }}>
       <div className="flex gap-10 items-center">
         <div className="casino">
           <a href={"/casino/" + torneo.casinos.id}>
@@ -26,11 +30,7 @@ export default function InfoTournament({ torneo }) {
           </div>
         </div>
         <div className="name">
-          <a
-            href={"/torneo/" + torneo.id}
-            className="underline decoration-2 underline-offset-2">
-            {torneo.name}
-          </a>
+          <a href={"/torneo/" + torneo.id}>{torneo.name}</a>
         </div>
       </div>
       {torneo.price && <div className="price font-bold">{torneo.price}€</div>}

@@ -9,19 +9,19 @@ export default function RowTournament(props) {
 
   return (
     <div
-      className="rowtournament relative text-white"
+      className="rowtournament relative"
       style={{ backgroundColor: backgroundColor, color: textColor }}>
       {casino && (
-        <div className="casino md:hidden text-xs w-full ml-4 pt-1 text-gray-300">
+        <div className="casino md:hidden text-xs w-full ml-3 pt-1">
           {torneo.casinos.name}
         </div>
       )}
       <div className="w-full flex gap-4 justify-between p-2 pt-0 md:pt-2 items-center space-x-1">
         {casino && (
-          <div className="casino hidden md:block text-xs w-1/12 ml-2">
+          <div className="casino text-xs w-2/12 md:w-1/12 ml-2">
             <a href={"/casino/" + torneo.casinos.id}>
               <img
-                className="mr-4 hidden md:inline w-20 max-h-10"
+                className="mr-4 w-24"
                 src={torneo.casinos.logo}
                 alt={"Logo " + torneo.casinos.name}
               />
@@ -29,13 +29,13 @@ export default function RowTournament(props) {
           </div>
         )}
 
-        <div className="name text-left w-8/12">
+        <div className="name text-left w-7/12 md:w-8/12">
           <a
             href={"/torneo/" + torneo.id}
             className="text-sm md:text-lg flex flex-col md:flex-row md:items-center">
             {torneo.image && (
               <img
-                className="mr-4 hidden md:inline w-20 max-h-10"
+                className="mr-4 hidden md:inline max-h-10"
                 src={torneo.image}
                 alt={"Icono " + torneo.name}
               />
