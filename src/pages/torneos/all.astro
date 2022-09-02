@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Tournaments from "../../components/tournament/Tournaments";
+import { getProximosTorneos, getAllCasinos } from "../../lib/api";
+
+let torneos = await getProximosTorneos();
+let casinos = await getAllCasinos();
+---
+
+<Layout
+  title="Torneos Poker"
+  description="Información actualizada sobre torneos de Poker en España"
+>
+  <main class="mx-5">
+    <h2 class="text-2xl font-bold py-4">Próximos Torneos</h2>
+    <Tournaments torneos={torneos} casinos={casinos} client:load />
+  </main>
+</Layout>
