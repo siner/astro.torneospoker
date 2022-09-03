@@ -23,14 +23,13 @@ export default function Tournaments(props) {
     filteredTournaments = torneos.filter((item) =>
       updatedList.includes(item.casinos.id.toString())
     );
-    console.log(filteredTournaments);
   };
 
   return (
     <div className="w-full mt-10">
       <div>
         <form>
-          <div className="mb-4">
+          <div className="mb-4 grid grid-cols-2 md:grid-cols-5">
             {casinos.map((casino) => (
               <div key={casino.id}>
                 <input
