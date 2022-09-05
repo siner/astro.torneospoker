@@ -38,6 +38,37 @@ export async function getCasinoSlug(slug) {
   return casino;
 }
 
+export async function getEventoSlug(slug) {
+  let { data: evento } = await supabase
+    .from("events")
+    .select("*,casinos(*)")
+    .eq("slug", slug)
+    .limit(1)
+    .single();
+  return evento;
+}
+
+export async function getCurrentEvents() {
+  let today = getTodayText();
+  let { data: eventos, error } = await supabase
+    .from("events")
+    .select("*")
+    .lte("from", today)
+    .gte("to", today);
+
+  return eventos;
+}
+
+export async function getNextEvents() {
+  let today = getTodayText();
+  let { data: eventos, error } = await supabase
+    .from("events")
+    .select("*")
+    .gt("from", today);
+
+  return eventos;
+}
+
 export async function newCasino(newcasino) {
   let { data: casino } = await supabase.from("casinos").insert(newcasino);
   return casino;
@@ -74,7 +105,7 @@ export async function updateTorneo(id, newtorneo) {
 export async function getTorneo(id) {
   let { data: torneo } = await supabase
     .from("torneos")
-    .select("*,casinos(*)")
+    .select("*,casinos(*),events(*)")
     .eq("id", id)
     .limit(1)
     .single();
@@ -93,7 +124,7 @@ export async function getTorneosCasino(id) {
 export async function getProximosTorneosCasino(id) {
   let { data: torneos } = await supabase
     .from("torneos")
-    .select("*,casinos(*)")
+    .select("*,casinos(*),events(*)")
     .eq("casino_id", id)
     .gte("date", getTodayText())
     .order("date");
@@ -103,8 +134,17 @@ export async function getProximosTorneosCasino(id) {
 export async function getProximosTorneos() {
   let { data: torneos } = await supabase
     .from("torneos")
-    .select("*,casinos(*)")
+    .select("*,casinos(*),events(*)")
     .gte("date", getTodayText())
+    .order("date");
+  return torneos;
+}
+
+export async function getTorneosEvento(event_id) {
+  let { data: torneos } = await supabase
+    .from("torneos")
+    .select("*,casinos(*),events(*)")
+    .eq("event_id", event_id)
     .order("date");
   return torneos;
 }
@@ -118,12 +158,13 @@ export async function getProximosTorneosId() {
 }
 
 export async function getProximosTorneosPaginated(from, to) {
-  let { data: torneos } = await supabase
+  let { data: torneos, error } = await supabase
     .from("torneos")
-    .select("*,casinos(*)")
+    .select("*,casinos(*),events(*)")
     .gte("date", getTodayText())
     .order("date")
     .range(from, to);
+  console.log(error);
   return torneos;
 }
 

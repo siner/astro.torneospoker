@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CardEvento from "../../components/evento/CardEvento";
+
+import { getCurrentEvents, getNextEvents } from "../../lib/api";
+
+let currentevents = await getCurrentEvents();
+let nextevents = await getNextEvents();
+---
+
+<Layout
+  title="Torneos Poker"
+  description="Información actualizada sobre torneos de Poker en España"
+>
+  <main class="mx-5">
+    <h2 class="text-2xl font-bold py-4">Eventos live actuales</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {currentevents.map((event) => <CardEvento evento={event} />)}
+    </div>
+
+    <h2 class="text-2xl font-bold py-4">Eventos live futuros</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {nextevents.map((event) => <CardEvento evento={event} />)}
+    </div>
+  </main>
+</Layout>

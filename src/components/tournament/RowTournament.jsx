@@ -30,18 +30,16 @@ export default function RowTournament(props) {
         )}
 
         <div className="name text-left w-7/12 md:w-8/12">
-          <a
-            href={"/torneo/" + torneo.id}
-            className="text-sm md:text-lg flex flex-col md:flex-row md:items-center">
-            {torneo.image && (
+          {torneo.events && (
+            <a href={"/evento/" + torneo.events.slug}>
               <img
                 className="mr-4 hidden md:inline max-h-10"
-                src={torneo.image}
-                alt={"Icono " + torneo.name}
+                src={torneo.events.logo}
+                alt={"Icono " + torneo.events.name}
               />
-            )}
-            {torneo.name}
-          </a>
+            </a>
+          )}
+          <a href={"/torneo/" + torneo.id}>{torneo.name}</a>
         </div>
 
         <div className="md:space-x-2 md:gap-2 text-xs items-end text-right w-2/12 md:font-bold">
