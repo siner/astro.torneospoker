@@ -6,11 +6,9 @@ export interface Props {
   title: string;
   description?: string;
 }
-
-let GAID = import.meta.env.PUBLIC_GAID;
-
 const { title, description } = Astro.props as Props;
 import "../styles/style.css";
+const GAID = import.meta.env.PUBLIC_GAID;
 ---
 
 <!DOCTYPE html>
