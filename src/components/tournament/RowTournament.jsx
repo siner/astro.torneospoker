@@ -19,7 +19,7 @@ export default function RowTournament(props) {
       <div className="w-full flex gap-4 justify-between p-2 pt-0 md:pt-2 items-center space-x-1">
         {casino && (
           <div className="casino text-xs w-2/12 md:w-1/12 ml-2">
-            <a href={"/casino/" + torneo.casinos.id}>
+            <a href={"/casino/" + torneo.casinos.slug}>
               <img
                 className="mr-4 w-24"
                 src={torneo.casinos.logo}

@@ -14,7 +14,7 @@ export default function InfoTournament(props) {
       style={{ backgroundColor: backgroundColor, color: textColor }}>
       <div className="flex gap-10 items-center">
         <div className="casino">
-          <a href={"/casino/" + torneo.casinos.id}>
+          <a href={"/casino/" + torneo.casinos.slug}>
             <img
               src={torneo.casinos.logo}
               title={torneo.casinos.name}

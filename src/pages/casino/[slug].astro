@@ -4,15 +4,15 @@ import CardCasino from "../../components/casino/CardCasino";
 import RowTournament from "../../components/tournament/RowTournament";
 import RowCashgame from "../../components/cashgame/RowCashgame";
 
-const id = Astro.params.id;
+const slug = Astro.params.slug;
 import {
-  getCasino,
+  getCasinoSlug,
   getProximosTorneosCasino,
   getCashgamesCasino,
 } from "../../lib/api";
-let casino = await getCasino(id);
-let torneos = await getProximosTorneosCasino(id);
-let cashgames = await getCashgamesCasino(id);
+let casino = await getCasinoSlug(slug);
+let torneos = await getProximosTorneosCasino(casino.id);
+let cashgames = await getCashgamesCasino(casino.id);
 
 import { getUser, isAdmin } from "../../lib/auth";
 const user = await getUser(Astro.request);
@@ -32,7 +32,7 @@ if (user) {
             <div class="p-5 text-right">
               <a
                 class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                href={"/admin/casino/" + casino.id}>
+                href={"/admin/casino/" + casino.slug}>
                 Editar
               </a>
             </div>

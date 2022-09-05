@@ -28,6 +28,16 @@ export async function getCasino(id) {
   return casino;
 }
 
+export async function getCasinoSlug(slug) {
+  let { data: casino } = await supabase
+    .from("casinos")
+    .select("*")
+    .eq("slug", slug)
+    .limit(1)
+    .single();
+  return casino;
+}
+
 export async function newCasino(newcasino) {
   let { data: casino } = await supabase.from("casinos").insert(newcasino);
   return casino;
