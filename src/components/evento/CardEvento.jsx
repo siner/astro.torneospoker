@@ -1,7 +1,7 @@
 export default function CardEvento({ evento }) {
   return (
     <div className="rounded overflow-hidden shadow-lg">
-      <div className="text-center p-8 bg-white">
+      <div className="text-center p-8 bg-slate-300 hover:bg-slate-400">
         <a href={"/evento/" + evento.slug}>
           <img className="mx-auto h-14" src={evento.logo} alt={evento.name} />
         </a>
