@@ -163,13 +163,12 @@ export async function getProximosTorneosId() {
 }
 
 export async function getProximosTorneosPaginated(from, to) {
-  let { data: torneos, error } = await supabase
+  let { data: torneos } = await supabase
     .from("torneos")
     .select("*,casinos(*),events(*)")
     .gte("date", getTodayText())
     .order("date")
     .range(from, to);
-  console.log(error);
   return torneos;
 }
 
