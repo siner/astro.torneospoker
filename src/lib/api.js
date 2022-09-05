@@ -59,7 +59,8 @@ export async function getCurrentEvents() {
     .from("events")
     .select("*")
     .lte("from", today)
-    .gte("to", today);
+    .gte("to", today)
+    .order("from", { ascending: true });
 
   return eventos;
 }
@@ -69,7 +70,8 @@ export async function getNextEvents() {
   let { data: eventos, error } = await supabase
     .from("events")
     .select("*")
-    .gt("from", today);
+    .gt("from", today)
+    .order("from", { ascending: true });
 
   return eventos;
 }
