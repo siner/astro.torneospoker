@@ -33,7 +33,9 @@ export default function InfoTournament(props) {
           <a href={"/torneo/" + torneo.id}>{torneo.name}</a>
         </div>
       </div>
-      {torneo.price && <div className="price font-bold">{torneo.price}€</div>}
+      {torneo.price && torneo.price > 0 && (
+        <div className="price font-bold">{torneo.price}€</div>
+      )}
     </div>
   );
 }

@@ -44,7 +44,7 @@ let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
             }
           </div>
           {
-            torneo.price && (
+            torneo.price && torneo.price > 0 && (
               <div class="text-4xl font-bold w-1/3 text-right">
                 {torneo.price}€
               </div>

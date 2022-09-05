@@ -48,7 +48,7 @@ export default function RowTournament(props) {
           <p>{hour}</p>
         </div>
         <div className="price font-bold text-xs md:text-lg w-1/12 text-right">
-          {torneo.price && <span>{torneo.price}€</span>}
+          {torneo.price && torneo.price > 0 && <span>{torneo.price}€</span>}
         </div>
       </div>
     </div>

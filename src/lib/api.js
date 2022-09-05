@@ -13,6 +13,11 @@ export async function getAllCasinos() {
   return casinos;
 }
 
+export async function getAllEventos() {
+  let { data: eventos } = await supabase.from("events").select("*");
+  return eventos;
+}
+
 export async function getAllTorneos() {
   let { data: torneos } = await supabase.from("torneos").select("*");
   return torneos;
