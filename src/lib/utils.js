@@ -28,6 +28,14 @@ export function getMobileDate(date) {
   ].join("/");
 }
 
+export function getSimpleDate(date) {
+  let newdate = new Date(date);
+  return [
+    padTo2Digits(newdate.getDate()),
+    padTo2Digits(newdate.getMonth() + 1),
+  ].join("/");
+}
+
 export function getPagination(page, size) {
   const limit = size ? +size : 5;
   const from = page ? page * limit : 0;
