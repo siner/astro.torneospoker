@@ -56,6 +56,20 @@ export default function CreateCasino() {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="slug">
+              Slug
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="slug"
+              value={casino.slug}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="address">
               Dirección
             </label>
