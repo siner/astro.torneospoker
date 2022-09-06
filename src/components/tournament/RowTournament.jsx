@@ -33,7 +33,7 @@ export default function RowTournament(props) {
           {event && torneo.events && (
             <a href={"/evento/" + torneo.events.slug}>
               <img
-                className="mr-4 w-16"
+                className="mr-4 w-12 mb-1"
                 src={torneo.events.logo}
                 alt={"Icono " + torneo.events.name}
               />

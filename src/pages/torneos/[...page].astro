@@ -75,7 +75,11 @@ prev = prev == 0 ? "" : prev;
       }
     </div>
     <div class="space-y-1">
-      {torneos.map((torneo) => <RowTournament torneo={torneo} casino="true" />)}
+      {
+        torneos.map((torneo) => (
+          <RowTournament torneo={torneo} casino={true} event={true} />
+        ))
+      }
     </div>
     <div class="mt-4 space-x-2 flex justify-between">
       {
