@@ -15,6 +15,7 @@ let torneos = await getProximosTorneosCasino(casino.id);
 let cashgames = await getCashgamesCasino(casino.id);
 
 import { getUser, isAdmin } from "../../lib/auth";
+import LinkButton from "../../components/elements/LinkButton";
 const user = await getUser(Astro.request);
 let is_admin;
 if (user) {
@@ -27,6 +28,15 @@ if (user) {
     <div class="md:flex gap-4">
       <div class="w-100 md:w-1/3 mt-6">
         <CardCasino casino={casino} />
+        <div class="mt-8">
+          {
+            casino.url && (
+              <LinkButton href={casino.url} target="_blank">
+                Visitar web
+              </LinkButton>
+            )
+          }
+        </div>
         {
           is_admin && (
             <div class="p-5 text-right">
@@ -35,6 +45,20 @@ if (user) {
                 href={"/admin/casino/" + casino.id}>
                 Editar
               </a>
+            </div>
+          )
+        }
+      </div>
+      <div class="md:w-2/3">
+        {
+          torneos.length > 0 && (
+            <div>
+              <h2 class="text-4xl font-bold py-4">Próximos Torneos</h2>
+              <div class="space-y-0.5">
+                {torneos.map((torneo) => (
+                  <RowTournament torneo={torneo} event={true} />
+                ))}
+              </div>
             </div>
           )
         }
@@ -52,20 +76,6 @@ if (user) {
                 </div>
                 {cashgames.map((cashgame) => (
                   <RowCashgame cashgame={cashgame} casino={casino} />
-                ))}
-              </div>
-            </div>
-          )
-        }
-      </div>
-      <div class="md:w-2/3">
-        {
-          torneos.length > 0 && (
-            <div>
-              <h2 class="text-4xl font-bold py-4">Próximos Torneos</h2>
-              <div class="space-y-0.5">
-                {torneos.map((torneo) => (
-                  <RowTournament torneo={torneo} />
                 ))}
               </div>
             </div>

@@ -39,10 +39,10 @@ if (user) {
         {
           torneos.length > 0 && (
             <div>
-              <h2 class="text-4xl font-bold py-4">Torneos</h2>
-              <div class="space-y-0.5">
+              <h1 class="text-4xl font-bold py-4">Torneos del {evento.name}</h1>
+              <div class="space-y-1">
                 {torneos.map((torneo) => (
-                  <RowTournament torneo={torneo} casino={true} />
+                  <RowTournament torneo={torneo} />
                 ))}
               </div>
             </div>

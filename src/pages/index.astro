@@ -30,7 +30,7 @@ let nextevents = await getNextEvents();
     <div class="space-y-0.5">
       {
         torneos?.map((torneo) => (
-          <RowTournament torneo={torneo} casino="true" />
+          <RowTournament torneo={torneo} casino="true" event="true" />
         ))
       }
     </div>

@@ -1,24 +1,24 @@
 import { formatDate, getMobileDate, getTextColor } from "../../lib/utils";
 
 export default function RowTournament(props) {
-  const { torneo, casino } = props;
+  const { torneo, casino, event } = props;
   const backgroundColor = torneo.casinos.color;
   const textColor = getTextColor(backgroundColor);
   let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
-  let mobiledate = getMobileDate(torneo.date);
 
   return (
     <div
-      className="rowtournament relative"
+      className="rowtournament shadow-lg"
       style={{ backgroundColor: backgroundColor, color: textColor }}>
-      {casino && (
-        <div className="casino md:hidden text-xs w-full ml-3 pt-1">
-          {torneo.casinos.name}
+      <div className="text-xs ml-5 mr-2 pt-1 mb-2 flex justify-between">
+        {casino && <div className="casino">{torneo.casinos.name}</div>}
+        <div className="font-bold text-right grow">
+          {datestring} - {hour}
         </div>
-      )}
+      </div>
       <div className="w-full flex gap-4 justify-between p-2 pt-0 md:pt-2 items-center space-x-1">
         {casino && (
-          <div className="casino text-xs w-2/12 md:w-1/12 ml-2">
+          <div className="casino hidden md:inline text-xs w-2/12 md:w-1/12 ml-2 mb-2">
             <a href={"/casino/" + torneo.casinos.slug}>
               <img
                 className="mr-4 w-24"
@@ -29,11 +29,11 @@ export default function RowTournament(props) {
           </div>
         )}
 
-        <div className="name text-left w-7/12 md:w-8/12">
-          {torneo.events && (
+        <div className="name w-8/12 flex items-center text-sm md:text-lg">
+          {event && torneo.events && (
             <a href={"/evento/" + torneo.events.slug}>
               <img
-                className="mr-4 hidden md:inline max-h-10"
+                className="mr-4 w-16"
                 src={torneo.events.logo}
                 alt={"Icono " + torneo.events.name}
               />
@@ -42,13 +42,10 @@ export default function RowTournament(props) {
           <a href={"/torneo/" + torneo.id}>{torneo.name}</a>
         </div>
 
-        <div className="md:space-x-2 md:gap-2 text-xs items-end text-right w-2/12 md:font-bold">
-          <p className="hidden sm:block">{datestring}</p>
-          <p className="sm:hidden">{mobiledate}</p>
-          <p>{hour}</p>
-        </div>
-        <div className="price font-bold text-xs md:text-lg w-1/12 text-right">
-          {torneo.price && torneo.price > 0 && <span>{torneo.price}€</span>}
+        <div className="price font-bold text-lg md:text-2xl w-2/12 text-right">
+          <p>
+            {torneo.price && torneo.price > 0 && <span>{torneo.price}€</span>}
+          </p>
         </div>
       </div>
     </div>
