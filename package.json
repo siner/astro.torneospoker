@@ -13,6 +13,7 @@
     "@astrojs/cloudflare": "^1.0.1",
     "@astrojs/image": "^0.3.6",
     "@astrojs/react": "^1.0.0",
+    "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@astrojs/vercel": "^1.0.1",
     "astro": "^1.0.8",
