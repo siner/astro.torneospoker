@@ -23,7 +23,7 @@ if (user) {
 }
 ---
 
-<Layout title={casino.name} description={"Casino " + casino.name}>
+<Layout title={casino.name} description={"Todo el poker en " + casino.name}>
   <div class="mx-5">
     <div class="md:flex gap-4">
       <div class="w-100 md:w-1/3 mt-6">
@@ -53,7 +53,9 @@ if (user) {
         {
           torneos.length > 0 && (
             <div>
-              <h2 class="text-4xl font-bold py-4">Próximos Torneos</h2>
+              <h2 class="text-4xl font-bold py-4">
+                Próximos Torneos en {casino.name}
+              </h2>
               <div class="space-y-0.5">
                 {torneos.map((torneo) => (
                   <RowTournament torneo={torneo} event={true} />
@@ -65,7 +67,7 @@ if (user) {
         {
           cashgames.length > 0 && (
             <div>
-              <h2 class="text-4xl font-bold py-4">Cash</h2>
+              <h2 class="text-4xl font-bold py-4">Cash en {casino.name}</h2>
               <div class="space-y-0.5">
                 <div class="rowcashgame flex bg-slate-800 text-white">
                   <div class="w-full flex gap-4 justify-between p-5 py-2 items-center text-sm">
