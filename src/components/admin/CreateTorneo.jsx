@@ -107,7 +107,10 @@ export default function CreateTorneo(props) {
                 className="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 name="event_id"
                 onChange={handleChange}
-                defaultValue={reference ? reference.events.id : null}>
+                defaultValue={
+                  reference && reference.events ? reference.events.id : null
+                }>
+                <option value="null">--</option>
                 {eventos.map((evento) => (
                   <option key={evento.id} value={evento.id}>
                     {evento.name}
