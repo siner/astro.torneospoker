@@ -1,5 +1,4 @@
 ---
-import LoginStatus from "./auth/LoginStatus";
 import { getUser } from "../lib/auth";
 const user = await getUser(Astro.request);
 
@@ -41,10 +40,8 @@ const isLoggedIn = !(user == null);
         <li><a href="/eventos">Eventos</a></li>
         <li><a href="/torneos">Torneos</a></li>
         <li><a href="/casinos">Casinos</a></li>
+        <li><a href="/contacto">Contacto</a></li>
       </ul>
     </nav>
-    <!--
-      <LoginStatus isLoggedIn={isLoggedIn} />
-     -->
   </nav>
 </header>
