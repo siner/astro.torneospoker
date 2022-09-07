@@ -6,7 +6,7 @@ export default function CardEvento(props) {
   let datestringto = getSimpleDate(evento.to);
 
   return (
-    <div className="rounded overflow-hidden shadow-lg">
+    <div className="rounded overflow-hidden shadow-lg text-sm lg:text-base">
       <div className="text-center p-8 bg-slate-300 hover:bg-slate-400">
         <a href={"/evento/" + evento.slug}>
           <img className="mx-auto h-14" src={evento.logo} alt={evento.name} />
@@ -14,14 +14,14 @@ export default function CardEvento(props) {
       </div>
       <div className="px-6 py-4 space-y-4">
         <div className="flex justify-between mb-4">
-          <div className="flex content-center space-x-1">
+          <div className="flex content-center items-center space-x-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6">
+              class="w-5 h-5">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -30,7 +30,7 @@ export default function CardEvento(props) {
             </svg>
             <span>{datestringfrom}</span>
           </div>
-          <div className="flex content-center space-x-1">
+          <div className="flex content-center items-center space-x-1">
             <span>{datestringto}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ export default function CardEvento(props) {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6">
+              class="w-5 h-5">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
