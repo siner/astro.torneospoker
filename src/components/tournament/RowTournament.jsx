@@ -48,7 +48,7 @@ export default function RowTournament(props) {
           <a href={"/torneo/" + torneo.id}>{torneo.name}</a>
         </div>
 
-        <div className="price font-bold text-lg md:text-2xl w-2/12 text-right">
+        <div className="price font-bold text-xl md:text-2xl w-2/12 text-right">
           <p>
             {torneo.price && torneo.price > 0 && <span>{torneo.price}€</span>}
           </p>
