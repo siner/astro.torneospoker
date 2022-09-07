@@ -8,3 +8,11 @@
   width: 8px;
   height: 100%;
 }
+
+.af-form {
+  margin: 0 auto;
+}
+
+.af-button button {
+  background-color: #1e293b;
+}
