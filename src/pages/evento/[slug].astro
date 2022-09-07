@@ -3,11 +3,14 @@ import Layout from "../../layouts/Layout.astro";
 import CardCasino from "../../components/casino/CardCasino";
 import CardEvento from "../../components/evento/CardEvento";
 import RowTournament from "../../components/tournament/RowTournament";
+import Calendar from "../../components/calendar";
 
 const slug = Astro.params.slug;
 import { getEventoSlug, getTorneosEvento } from "../../lib/api";
 let evento = await getEventoSlug(slug);
 let torneos = await getTorneosEvento(evento.id);
+
+let fromdate = new Date(evento.from + " 00:00:00");
 
 import { getUser, isAdmin } from "../../lib/auth";
 const user = await getUser(Astro.request);
@@ -39,7 +42,7 @@ if (user) {
         {
           torneos.length > 0 && (
             <div>
-              <h1 class="text-4xl font-bold py-4">Torneos del {evento.name}</h1>
+              <h1 class="text-4xl font-bold py-4">Torneos de {evento.name}</h1>
               <div class="space-y-1">
                 {torneos.map((torneo) => (
                   <RowTournament torneo={torneo} />
@@ -49,6 +52,10 @@ if (user) {
           )
         }
       </div>
+    </div>
+    <div class="w-full hidden lg:block">
+      <h2 class="text-4xl font-bold py-4 text-center">Calendario</h2>
+      <Calendar torneos={torneos} value={fromdate} client:load />
     </div>
   </div>
 </Layout>

@@ -1,0 +1,17 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getProximosTorneos } from "../../lib/api";
+import Calendar from "../../components/calendar";
+
+let torneos = await getProximosTorneos();
+---
+
+<Layout
+  title="Torneos Poker - Calendario"
+  description="Calendario con los próximos torneos de Poker en España"
+>
+  <main class="mx-5">
+    <h2 class="text-2xl font-bold py-4">Próximos Torneos</h2>
+    <Calendar torneos={torneos} client:load />
+  </main>
+</Layout>

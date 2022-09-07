@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import CardCasino from "../../components/casino/CardCasino";
 import RowTournament from "../../components/tournament/RowTournament";
 import RowCashgame from "../../components/cashgame/RowCashgame";
+import Calendar from "../../components/calendar";
 
 const slug = Astro.params.slug;
 import {
@@ -84,6 +85,10 @@ if (user) {
           )
         }
       </div>
+    </div>
+    <div class="w-full hidden lg:block">
+      <h2 class="text-4xl font-bold py-4 text-center">Calendario</h2>
+      <Calendar torneos={torneos} client:load />
     </div>
   </div>
 </Layout>
