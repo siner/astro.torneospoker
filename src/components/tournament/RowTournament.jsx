@@ -5,11 +5,17 @@ export default function RowTournament(props) {
   const backgroundColor = torneo.casinos.color;
   const textColor = getTextColor(backgroundColor);
   let { datestring, hour } = formatDate(torneo.date + " " + torneo.hour);
+  let opacity =
+    new Date(torneo.date + " " + torneo.hour) < new Date() ? "0.7" : "1";
 
   return (
     <div
       className="rowtournament shadow-lg"
-      style={{ backgroundColor: backgroundColor, color: textColor }}>
+      style={{
+        backgroundColor: backgroundColor,
+        color: textColor,
+        opacity: opacity,
+      }}>
       <div className="text-xs ml-5 mr-2 pt-1 mb-2 flex justify-between">
         {casino && <div className="casino">{torneo.casinos.name}</div>}
         <div className="font-bold text-right grow">
