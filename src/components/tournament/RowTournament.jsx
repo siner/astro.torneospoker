@@ -10,7 +10,7 @@ export default function RowTournament(props) {
     <div
       className="rowtournament shadow-lg"
       style={{ backgroundColor: backgroundColor, color: textColor }}>
-      <div className="text-xs mx-2 pt-1 mb-2 md:mb-0 flex justify-between">
+      <div className="text-xs ml-5 mr-2 pt-1 mb-2 flex justify-between">
         {casino && <div className="casino">{torneo.casinos.name}</div>}
         <div className="font-bold text-right grow">
           {datestring} - {hour}
@@ -29,11 +29,11 @@ export default function RowTournament(props) {
           </div>
         )}
 
-        <div className="name w-10/12 md:w-8/12 flex items-center text-sm md:text-lg">
+        <div className="name w-8/12 flex items-center text-sm md:text-lg">
           {event && torneo.events && (
             <a href={"/evento/" + torneo.events.slug}>
               <img
-                className="w-12 mr-4"
+                className="mr-4 w-12 mb-1"
                 src={torneo.events.logo}
                 alt={"Icono " + torneo.events.name}
               />
