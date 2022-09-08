@@ -12,6 +12,6 @@ let torneos = await getProximosTorneos();
 >
   <main class="mx-5">
     <h2 class="text-2xl font-bold py-4">Próximos Torneos</h2>
-    <Calendar torneos={torneos} client:load />
+    <Calendar torneos={torneos} client:visible />
   </main>
 </Layout>
