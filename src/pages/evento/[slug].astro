@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import CardCasino from "../../components/casino/CardCasino";
 import CardEvento from "../../components/evento/CardEvento";
 import RowTournament from "../../components/tournament/RowTournament";
-import Calendar from "../../components/calendar";
 
 const slug = Astro.params.slug;
 import { getEventoSlug, getTorneosEvento } from "../../lib/api";
@@ -13,6 +12,8 @@ let torneos = await getTorneosEvento(evento.id);
 let fromdate = new Date(evento.from + " 00:00:00");
 
 import { getUser, isAdmin } from "../../lib/auth";
+import Calendar from "../../components/calendar/Calendar";
+
 const user = await getUser(Astro.request);
 let is_admin;
 if (user) {

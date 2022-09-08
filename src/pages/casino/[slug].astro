@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import CardCasino from "../../components/casino/CardCasino";
 import RowTournament from "../../components/tournament/RowTournament";
 import RowCashgame from "../../components/cashgame/RowCashgame";
-import Calendar from "../../components/calendar";
 
 const slug = Astro.params.slug;
 import {
@@ -17,6 +16,7 @@ let cashgames = await getCashgamesCasino(casino.id);
 
 import { getUser, isAdmin } from "../../lib/auth";
 import LinkButton from "../../components/elements/LinkButton";
+import Calendar from "../../components/calendar/Calendar";
 const user = await getUser(Astro.request);
 let is_admin;
 if (user) {

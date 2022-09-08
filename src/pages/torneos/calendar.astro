@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getProximosTorneos } from "../../lib/api";
-import Calendar from "../../components/calendar";
+import Calendar from "../../components/calendar/Calendar";
 
 let torneos = await getProximosTorneos();
 ---
