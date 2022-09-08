@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function CalendarHeader({ value, onChange }) {
   function currMonthName() {
     return value.format("MMMM");
