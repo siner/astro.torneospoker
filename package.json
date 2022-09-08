@@ -16,12 +16,12 @@
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@astrojs/vercel": "^1.0.1",
-    "@types/react": "^18.0.18",
+    "@types/react": "^16.14.31",
     "astro": "^1.0.8",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "dependencies": {
     "@julian_cataldo/astro-analytics": "^0.11.5",
