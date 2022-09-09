@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { ArenguForm } from "react-arengu-forms";
 const ARENGU_ID = import.meta.env.PUBLIC_ARENGU_ID;
 ---
 
@@ -11,6 +10,6 @@ const ARENGU_ID = import.meta.env.PUBLIC_ARENGU_ID;
   <div class="w-1/2 mx-auto">
     <h1 class="text-2xl font-bold py-4 text-center">Contacto</h1>
 
-    <ArenguForm id={ARENGU_ID} client:load />
+    <div data-arengu-form-id={ARENGU_ID}></div>
   </div>
 </Layout>
