@@ -1,7 +1,7 @@
-import { formatDate, getMobileDate, getTextColor } from "../../lib/utils";
+import { getTextColor } from "../../lib/utils";
 
-export default function RowTournament(props) {
-  const { torneo, casino, event } = props;
+export default function MiniRowTournament(props) {
+  const { torneo } = props;
   const backgroundColor = torneo.casinos.color;
   const textColor = getTextColor(backgroundColor);
   let datetorneo = new Date(torneo.date);

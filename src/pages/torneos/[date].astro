@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import RowTournament from "../../components/tournament/RowTournament";
+import { getTorneosDate } from "../../lib/api";
+import { localeDateString } from "../../lib/utils";
+
+let date = Astro.params.date;
+let torneos = await getTorneosDate(date);
+---
+
+<Layout title="Torneos Poker de hoy" description="Torneos de poker en vivo hoy">
+  <main class="mx-5">
+    <h2 class="text-2xl font-bold py-4">
+      Torneos {localeDateString(new Date(date))}
+    </h2>
+    <div class="space-y-1">
+      {
+        torneos.map((torneo) => (
+          <RowTournament torneo={torneo} casino={true} event={true} />
+        ))
+      }
+    </div>
+  </main>
+</Layout>

@@ -1,12 +1,5 @@
 import { supabase } from "./supabaseClient";
-
-function getTodayText() {
-  let today = new Date();
-  var dd = String(today.getDate()).padStart(2, "0");
-  var mm = String(today.getMonth() + 1).padStart(2, "0");
-  var yyyy = today.getFullYear();
-  return yyyy + "-" + mm + "-" + dd;
-}
+import { getTodayText } from "./utils";
 
 export async function getAllCasinos() {
   let { data: casinos } = await supabase.from("casinos").select("*");
@@ -168,6 +161,15 @@ export async function getProximosTorneos() {
     .from("torneos")
     .select("*,casinos(*),events(*)")
     .gte("date", getTodayText())
+    .order("date");
+  return torneos;
+}
+
+export async function getTorneosDate(date) {
+  let { data: torneos } = await supabase
+    .from("torneos")
+    .select("*,casinos(*),events(*)")
+    .eq("date", getTodayText())
     .order("date");
   return torneos;
 }
