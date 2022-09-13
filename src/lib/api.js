@@ -93,6 +93,7 @@ export async function newTorneo(newtorneo) {
   let { data: torneo } = await supabase.from("torneos").insert(newtorneo);
   return torneo;
 }
+
 export async function deleteTorneo(torneo_id) {
   let { data: torneo } = await supabase
     .from("torneos")
@@ -107,6 +108,30 @@ export async function updateTorneo(id, newtorneo) {
     .update(newtorneo)
     .eq("id", id);
   return torneo;
+}
+
+export async function newEvento(newevento) {
+  let { data: evento } = await supabase.from("events").insert(newevento);
+  return evento;
+}
+
+export async function updateEvento(id, newevento) {
+  let { data: evento, error } = await supabase
+    .from("events")
+    .update(newevento)
+    .eq("id", id);
+  console.log(error);
+  return evento;
+}
+
+export async function getEvento(id) {
+  let { data: evento } = await supabase
+    .from("events")
+    .select("*,casinos(*)")
+    .eq("id", id)
+    .limit(1)
+    .single();
+  return evento;
 }
 
 export async function getTorneo(id) {
