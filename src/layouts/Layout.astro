@@ -22,9 +22,9 @@ const GAID = import.meta.env.PUBLIC_GAID;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <Analytics id={GAID} />
+    {GAID && <Analytics id={GAID} />}
     {
-      title == "Contacto" && (
+      Astro.url.pathname == "/contacto" && (
         <script async src="https://sdk.arengu.com/forms.js" async />
       )
     }
