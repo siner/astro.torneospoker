@@ -11,6 +11,7 @@ export interface Props {
 const { title, description } = Astro.props as Props;
 import "../styles/style.css";
 const GAID = import.meta.env.PUBLIC_GAID;
+const ADSENSEID = import.meta.env.PUBLIC_ADSENSEID;
 ---
 
 <!DOCTYPE html>
@@ -24,6 +25,12 @@ const GAID = import.meta.env.PUBLIC_GAID;
     <meta name="description" content={description} />
     <Analytics id={GAID} />
     <script async src="https://sdk.arengu.com/forms.js"></script>
+    <script
+      async
+      src={"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
+        ADSENSEID}
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="flex flex-col h-screen justify-between">
