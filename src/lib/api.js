@@ -140,9 +140,9 @@ export async function getTorneo(id) {
 export async function getTorneosCasino(id) {
   let { data: torneos } = await supabase
     .from("torneos")
-    .select("*")
+    .select("*,casinos(*),events(*)")
     .eq("casino_id", id)
-    .order("date", { ascending: false });
+    .order("date");
   return torneos;
 }
 
