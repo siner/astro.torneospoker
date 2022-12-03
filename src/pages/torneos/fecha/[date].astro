@@ -1,8 +1,8 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import RowTournament from "../../components/tournament/RowTournament";
-import { getTorneosDate } from "../../lib/api";
-import { localeDateString } from "../../lib/utils";
+import Layout from "../../../layouts/Layout.astro";
+import RowTournament from "../../../components/tournament/RowTournament";
+import { getTorneosDate } from "../../../lib/api";
+import { localeDateString } from "../../../lib/utils";
 
 let date = Astro.params.date;
 let torneos = await getTorneosDate(date);
