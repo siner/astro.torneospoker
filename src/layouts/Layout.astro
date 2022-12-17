@@ -1,7 +1,4 @@
 ---
-import Analytics from "@julian_cataldo/astro-analytics/Analytics.astro";
-import { inject } from '@vercel/analytics';
-
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -11,8 +8,6 @@ export interface Props {
 }
 const { title, description } = Astro.props as Props;
 import "../styles/style.css";
-const GAID = import.meta.env.PUBLIC_GAID;
-inject();
 ---
 
 <!DOCTYPE html>
@@ -28,10 +23,9 @@ inject();
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {GAID && <Analytics id={GAID} />}
     {
       Astro.url.pathname == "/contacto" && (
-        <script async src="https://sdk.arengu.com/forms.js" async />
+        <script async src="https://sdk.arengu.com/forms.js" />
       )
     }
   </head>
