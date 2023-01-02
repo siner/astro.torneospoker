@@ -1,11 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import CardEvento from "../../components/evento/CardEvento";
+import RowEvento from "../../components/evento/RowEvento";
 
-import { getCurrentEvents, getNextEvents } from "../../lib/api";
+import { getCurrentEvents, getNextEvents, getPastEvents } from "../../lib/api";
 
 let currentevents = await getCurrentEvents();
 let nextevents = await getNextEvents();
+let pastevents = await getPastEvents();
 ---
 
 <Layout
@@ -21,6 +23,11 @@ let nextevents = await getNextEvents();
     <h2 class="text-2xl font-bold py-4">Eventos live futuros</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4">
       {nextevents.map((event) => <CardEvento evento={event} />)}
+    </div>
+
+    <h2 class="text-2xl font-bold py-4">Eventos live anteriores</h2>
+    <div class="space-y-0.5">
+      {pastevents.map((event) => <RowEvento evento={event} />)}
     </div>
   </main>
 </Layout>

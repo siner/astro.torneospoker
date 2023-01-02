@@ -50,7 +50,7 @@ export async function getCurrentEvents() {
   let today = getTodayText();
   let { data: eventos, error } = await supabase
     .from("events")
-    .select("*")
+    .select("*,casinos(*)")
     .lte("from", today)
     .gte("to", today)
     .order("from", { ascending: true });
@@ -62,9 +62,20 @@ export async function getNextEvents() {
   let today = getTodayText();
   let { data: eventos, error } = await supabase
     .from("events")
-    .select("*")
+    .select("*,casinos(*)")
     .gt("from", today)
     .order("from", { ascending: true });
+
+  return eventos;
+}
+
+export async function getPastEvents() {
+  let today = getTodayText();
+  let { data: eventos, error } = await supabase
+    .from("events")
+    .select("*,casinos(*)")
+    .lt("to", today)
+    .order("from", { ascending: false });
 
   return eventos;
 }
